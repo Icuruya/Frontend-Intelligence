@@ -1,156 +1,87 @@
-# Dynamics.js
-Dynamics.js is a JavaScript library to create physics-based animations
+# dynamics.js
 
-To see some demos, check out [dynamicsjs.com](http://dynamicsjs.com).
+## Project Overview
 
-## Usage
-Download:
-- [GitHub releases](https://github.com/michaelvillar/dynamics.js/releases)
-- [npm](https://www.npmjs.com/package/dynamics.js): `npm install dynamics.js`
-- bower: `bower install dynamics.js`
+Dynamics.js is a JavaScript library designed to create realistic, physics-based animations. It allows you to animate CSS properties, SVG attributes, and JavaScript object values using dynamic concepts like springs, gravity, and bounce, resulting in more natural and engaging motion.
 
-Include `dynamics.js` into your page:
+## Core Features
+
+- **Physics-Based Animation**: Implements various physics models like `spring`, `bounce`, and `gravity` for realistic motion.
+- **Versatile Targeting**: Can animate CSS properties of DOM elements, SVG attributes, and values within any JavaScript object.
+- **Multiple Animation Types**: Includes a variety of animation types, from `easeInOut` and `linear` to complex `bezier` curves.
+- **Highly Customizable**: Each animation type offers specific parameters to fine-tune its behavior, such as `frequency`, `friction`, and `bounciness`.
+- **Built-in Utilities**: Provides its own `dynamics.setTimeout` to prevent issues with `requestAnimationFrame` in background tabs, and a debug mode to slow down animations for easier tweaking.
+
+## Installation & Setup
+
+You can install Dynamics.js via npm, Bower, or by including it directly from a CDN or local file.
+
+**NPM:**
+```bash
+npm install dynamics.js
+```
+
+**Bower:**
+```bash
+bower install dynamics.js
+```
+
+**CDN/Direct Include:**
 ```html
-<script src="dynamics.js"></script>
-```
-You can animate CSS properties of any DOM element.
-```javascript
-var el = document.getElementById("logo")
-dynamics.animate(el, {
-  translateX: 350,
-  scale: 2,
-  opacity: 0.5
-}, {
-  type: dynamics.spring,
-  frequency: 200,
-  friction: 200,
-  duration: 1500
-})
+<script src="https://unpkg.com/dynamics.js/lib/dynamics.min.js"></script>
 ```
 
-You also can animate SVG properties.
-```javascript
-var path = document.querySelector("path")
-dynamics.animate(path, {
-  d: "M0,0 L0,100 L100,50 L0,0 Z",
-  fill: "#FF0000",
-  rotateZ: 45,
-  // rotateCX and rotateCY are the center of the rotation
-  rotateCX: 100,
-  rotateCY: 100
-}, {
-  friction: 800
-})
+## Key Concepts & Usage
+
+The library's main function is `dynamics.animate()`, which applies a physics-based animation to a target.
+
+### Example 1: Spring Animation on a DOM Element
+
+This example applies a `spring` animation to an element, causing it to "spring" to its new position with a bounce effect.
+
+```html
+<div id="my-element" style="width: 100px; height: 100px; background: blue;"></div>
+
+<script>
+  const el = document.getElementById('my-element');
+
+  dynamics.animate(el, {
+    translateX: 300,
+    rotateZ: 45
+  }, {
+    type: dynamics.spring,
+    frequency: 200,
+    friction: 250,
+    duration: 1500
+  });
+</script>
 ```
 
-And any JavaScript object.
-```javascript
-var o = {
-  number: 10,
-  color: "#FFFFFF",
-  string: "10deg",
-  array: [ 1, 10 ]
-}
-dynamics.animate(o, {
-  number: 20,
-  color: "#000000",
-  string: "90deg",
-  array: [-9, 99 ]
-})
+### Example 2: Animating SVG Path Attributes
+
+This example demonstrates animating the `d` attribute of an SVG path to morph its shape, along with its fill color.
+
+```html
+<svg width="200" height="200">
+  <path id="my-path" d="M10,10 L10,190 L190,100 Z" fill="red"></path>
+</svg>
+
+<script>
+  const path = document.getElementById('my-path');
+
+  dynamics.animate(path, {
+    d: "M10,10 L190,10 L100,190 Z", // Target shape
+    fill: "#00FF00"
+  }, {
+    type: dynamics.bounce,
+    duration: 2000
+  });
+</script>
 ```
 
-## Reference
-### dynamics.animate(el, properties, options)
-Animates an element to the properties with the animation options.
-- `el` is a DOM element, a JavaScript object or an Array of elements
-- `properties` is an object of the properties/values you want to animate
-- `options` is an object representing the animation
-  - `type` is the [animation type](#dynamics-and-properties): `dynamics.spring`, `dynamics.easeInOut`,... (default: `dynamics.easeInOut`)
-  - `frequency`, `friction`, `bounciness`,... are specific to the animation type you are using
-  - `duration` is in milliseconds (default: `1000`)
-  - `delay` is in milliseconds (default: `0`)
-  - `complete` (optional) is the completion callback
-  - `change` (optional) is called at every change. Two arguments are passed to the function. `function(el, progress)`
-    - `el` is the element it's animating
-    - `progress` is the progress of the animation between 0 and 1
+## Directory Structure
 
-### dynamics.stop(el)
-Stops the animation applied on the element
-
-### dynamics.css(el, properties)
-This is applying the CSS properties to your element with the correct browser prefixes.
-- `el` is a DOM element
-- `properties` is an object of the CSS properties
-
-### dynamics.setTimeout(fn, delay)
-Dynamics.js has its own `setTimeout`. The reason is that `requestAnimationFrame` and `setTimeout` have different behaviors. In most browsers, `requestAnimationFrame` will not run in a background tab while `setTimeout` will. This can cause a lot of problems while using `setTimeout` along your animations. I suggest you use Dynamics's `setTimeout` and `clearTimeout` to handle these scenarios.
-- `fn` is the callback
-- `delay` is in milliseconds
-
-Returns a unique id
-
-### dynamics.clearTimeout(id)
-Clears a timeout that was defined earlier
-- `id` is the timeout id
-
-### dynamics.toggleSlow()
-Toggle a debug mode to slow down every animations and timeouts.
-This is useful for development mode to tweak your animation.
-This can be activated using `Shift-Control-D` in the browser.
-
-## Dynamics and properties
-### dynamics.spring
-- `frequency` default is 300
-- `friction` default is 200
-- `anticipationSize` (optional)
-- `anticipationStrength` (optional)
-
-### dynamics.bounce
-- `frequency` default is 300
-- `friction` default is 200
-
-### dynamics.forceWithGravity and dynamics.gravity
-- `bounciness` default is 400
-- `elasticity` default is 200
-
-### dynamics.easeInOut, dynamics.easeIn and dynamics.easeOut
-- `friction` default is 500
-
-### dynamics.linear
-No properties
-
-### dynamics.bezier
-- `points` array of points and control points
-
-The easiest way to output this kind of array is to use the [curve creator](http://dynamicsjs.com). Here is an example:
-```javascript
-[{"x":0,"y":0,"cp":[{"x":0.2,"y":0}]},
- {"x":0.5,"y":-0.4,"cp":[{"x":0.4,"y":-0.4},{"x":0.8,"y":-0.4}]},
- {"x":1,"y":1,"cp":[{"x":0.8,"y":1}]}]
-```
-
-## Contributing
-Compile: `npm run build` or `npm run build:watch`
-
-Run tests: `npm test`
-
-## Browser Support
-Working on
-- Safari 7+
-- Firefox 35+
-- Chrome 34+
-- IE10+
-
-## Sylvester
-Some code from Sylvester.js has been used (part of Vector and Matrix).
-
-## License
-The MIT License (MIT)
-
-Copyright (c) 2015 Michael Villar
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+- **`src/`**: Contains the core source code of the library, written in CoffeeScript.
+- **`lib/`**: (This directory is not in the source but is created on build) Contains the compiled and minified JavaScript files (`dynamics.js`, `dynamics.min.js`).
+- **`test/`**: Unit tests for the library, written for Mocha and Chai.
+- **`package.json`**: Defines project metadata, dependencies, and build scripts.
