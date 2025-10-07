@@ -1,75 +1,91 @@
-﻿# Velocity beta
+# Velocity.js
 
-[![npm](https://img.shields.io/npm/v/velocity-animate.svg)](https://www.npmjs.com/package/velocity-animate) [![npm (tag)](https://img.shields.io/npm/v/velocity-animate/beta.svg)](https://www.npmjs.com/package/velocity-animate) [![cdnjs version](https://img.shields.io/cdnjs/v/velocity.svg)](https://cdnjs.com/libraries/velocity) [![npm downloads](https://img.shields.io/npm/dm/velocity-animate.svg)](https://www.npmjs.com/package/velocity-animate) [![jsdelivr downloads](https://data.jsdelivr.com/v1/package/npm/velocity-animate/badge)](https://www.jsdelivr.com/package/npm/velocity-animate)
+## Project Overview
 
-## NPM: `npm install velocity-animate@beta`
+Velocity.js is a high-performance, standalone JavaScript animation engine. It provides the same API as jQuery's `$.animate()` but with significantly better performance, making it ideal for complex UI animations and motion design. It features color animation, transforms, loops, easings, SVG support, and scrolling.
 
-## Docs
-[https://github.com/julianshapiro/velocity/wiki](https://github.com/julianshapiro/velocity/wiki)
+## Core Features
 
-# IMPORTANT: The velocityjs.org documentation refers to V1, not V2 beta - use the wiki for latest documentation!
+- **High-Performance Engine**: Outperforms traditional jQuery and CSS-based animations.
+- **jQuery-Compatible API**: Can be used as a drop-in replacement for `$.animate()` in many cases.
+- **Rich Animation Support**: Animates CSS properties, colors, transforms, and SVG attributes.
+- **Advanced Control Flow**: Includes options for sequencing, looping, delaying, and queuing animations.
+- **UI Pack**: An optional UI pack provides a suite of pre-made animations for showing, hiding, and grabbing attention.
+- **Command-Based**: Offers a range of commands like `stop`, `pause`, `resume`, and `finish` for fine-grained control over animations.
 
-## News
-WhatsApp, Tumblr, Windows, Samsung, Uber, and thousands of other companies rely on Velocity. Visit [Libscore.com](http://libscore.com/#$.Velocity) to see which sites use Velocity on their homepage.
+## Installation & Setup
 
-## React Plugin
-Announcement: https://fabric.io/blog/introducing-the-velocityreact-library<br>
-Repo: https://github.com/twitter-fabric/velocity-react<br>
-NPM: https://www.npmjs.com/package/velocity-react
+You can install Velocity.js via npm or include it directly from a CDN.
 
-## Quickstart
-### Velocity (CDN, choose one of them):
-```html
-<script src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/2.0.6/velocity.min.js"></script>
+**NPM:**
+```bash
+npm install velocity-animate
+```
+Then, import it into your project:
+```javascript
+import Velocity from 'velocity-animate';
 ```
 
-### Velocity UI pack (CDN, choose one of them):
+**CDN:**
 ```html
-<script src="//cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/2.0.6/velocity.ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.min.js"></script>
+```
+If you want to use the UI pack for pre-made animations:
+```html
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@2.0/velocity.ui.min.js"></script>
 ```
 
-> Please note that JSDelivr can automatically supply the latest release, while CloudFlare needs to ask for a specific version.
+## Key Concepts & Usage
 
-### Package managers:
-_npm:_ `npm install velocity-animate@beta`
+Velocity can be called as a global function `Velocity(elements, ...)` or, if jQuery is present, chained like `$(elements).velocity(...)`.
 
-### Automagic chaining:
+### Example 1: Basic Property Animation
 
-If using the `.velocity(...)` chained function in libraries such as jQuery or Zepto you need to ensure that Velocity is loaded after them. If you wish to add it to anything loaded afterwards then look at the [Velocity.patch()](https://github.com/julianshapiro/velocity/wiki/Advanced---Patch) method.
+This example animates the `opacity` and `left` properties of an element.
 
-## Questions or Problems?
-Ask on [StackOverflow](http://stackoverflow.com/tags/velocity.js) (make sure you add the `[velocity.js]` and the `[javascript]` or `[typescript]` tags).
+**HTML:**
+```html
+<div id="my-element" style="position: relative; width: 100px; height: 100px; background: red;"></div>
+```
 
-## Updates
-- **[2.0](https://github.com/julianshapiro/velocity/compare/1.5.0...2.0.6)**: Typescript update and complete refactoring.
-- **[1.5](https://github.com/julianshapiro/velocity/compare/1.4.0...1.5.0)**: Bugfixes, IE9 compatibility fixes.
-- **[1.4](https://github.com/julianshapiro/velocity/compare/1.3.0...1.4.0)**: Pause / Resume (per element or global).<br>
-Forcefed string animation (just have matching number spaces) including unit conversions and colour names (ie `background:["rgba(red,0.1)", "blue"]`).
-High resolution timers (animations should be slightly smoother).<br>
-Various fixes including ticker (loading Velocity in a background window) and color handling.
-- **[1.3](https://github.com/julianshapiro/velocity/compare/1.2.0...1.3.0)**: Code cleanup - no breaking changes known.
-- **[1.2](https://github.com/julianshapiro/velocity/compare/1.1.0...1.2.0)**: [Custom tweens](http://VelocityJS.org/#progress). [Custom easings](http://VelocityJS.org/#easing). ["Finish" command](http://VelocityJS.org/#finish).
-- **[1.0](https://github.com/julianshapiro/velocity/compare/0.1.0...1.0.0)**: File name changed to `velocity.js`. Read [VelocityJS.org/#dependencies](http://VelocityJS.org/#dependencies).
-- **0.1**: `stop` now stops animations *immediately* (instead of only clearing the remainder of the animation queue). No other backwards-incompatible changes were made.
+**JavaScript:**
+```javascript
+const element = document.getElementById('my-element');
 
-## Learn
-- **Motion design**: [smashingmagazine.com/2014/06/18/faster-ui-animations-with-velocity-js](http://smashingmagazine.com/2014/06/18/faster-ui-animations-with-velocity-js)
-- **Animating without jQuery**: [smashingmagazine.com/2014/09/04/animating-without-jquery](http://www.smashingmagazine.com/2014/09/04/animating-without-jquery/)
-- **Performance comparisons**: [davidwalsh.name/css-js-animation](http://davidwalsh.name/css-js-animation)
-- **Workflow**: [css-tricks.com/improving-ui-animation-workflow-velocity-js](http://css-tricks.com/improving-ui-animation-workflow-velocity-js)
+// Using the global function
+Velocity(element, {
+  opacity: 0.5,
+  left: '200px'
+}, {
+  duration: 1000,
+  easing: 'ease-in-out'
+});
+```
 
-## Comparisons
-- **CSS transitions** are meant for simple interface flourishes.
-- **jQuery's $.animate()** is slow and poorly-equipped for motion design.
-- **Velocity** is a fast, feature-rich standalone alternative to jQuery's $.animate().
+### Example 2: Chaining and Commands
 
-## License
-[MIT License](LICENSE.md). © Julian Shapiro (http://twitter.com/julian).
+This example demonstrates chaining multiple animation calls and using the `reverse` command.
 
-## Sponsors
+**HTML:**
+```html
+<div id="chained-element" style="position: relative; width: 50px; height: 50px; background: green;"></div>
+```
 
-[![Kiss My Button](https://presskit.kissmybutton.gr/logos/kissmybutton-logo-small.png)](https://kissmybutton.gr)  sponsors Velocity's development.
+**JavaScript:**
+```javascript
+// This assumes jQuery or a similar library where Velocity has been patched.
+// For vanilla JS, you would use nested callbacks or Promises.
+$('#chained-element')
+  .velocity({ translateX: '200px' }, { duration: 1000 })
+  .velocity({ rotateZ: '90deg' }, { duration: 1000 })
+  .velocity("reverse", { delay: 500 }); // Reverse the entire animation sequence
+```
 
-[![BrowserStack](https://raw.githubusercontent.com/julianshapiro/velocity/master/.github/browserstack-logo-182x96.png)](https://browserstack.com/)  provides browser testing services for Velocity.
+## Directory Structure
+
+- **`src/`**: The core TypeScript source code for the animation engine.
+- **`src-ui/`**: The source code for the optional UI Pack, which contains pre-made animation sequences.
+- **`velocity.js` / `velocity.min.js`**: The compiled, distributable files for the main library.
+- **`velocity.ui.js` / `velocity.ui.min.js`**: The compiled, distributable files for the UI pack.
+- **`test/`**: Unit and integration tests for the library.
+- **`legacy/`**: Contains older versions or compatibility files.
