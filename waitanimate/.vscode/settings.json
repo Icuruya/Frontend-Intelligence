@@ -1,0 +1,10 @@
+{
+  "workbench.colorCustomizations": {
+    "sash.hoverBorder": "#c63632",
+    "titleBar.activeForeground": "#9d2b28",
+    "titleBar.inactiveForeground": "#9d2b2899"
+  },
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "svelte"],
+  "cSpell.words": ["bindable", "sindresorhus", "waitanimate"]
+}

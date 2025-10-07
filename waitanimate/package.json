@@ -1,0 +1,52 @@
+{
+  "name": "wait-animate",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "dev": "vite dev",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "prepare": "husky",
+    "preview": "vite preview"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,svelte}": [
+      "eslint --fix"
+    ],
+    "*.{css,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@sindresorhus/string-hash": "^2.0.0",
+    "copy-text-to-clipboard": "^3.2.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/adapter-static": "^3.0.6",
+    "@sveltejs/kit": "^2.7.3",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@will-stone/eslint-config": "^12.0.0",
+    "@will-stone/prettier-config": "^8.0.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.13.0",
+    "eslint-plugin-svelte": "^2.46.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-plugin-svelte": "^3.2.7",
+    "svelte": "^5.1.6",
+    "svelte-check": "^4.0.5",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  },
+  "overrides": {
+    "eslint": "^9.13.0"
+  }
+}
