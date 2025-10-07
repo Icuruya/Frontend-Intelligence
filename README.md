@@ -1,43 +1,27 @@
-# Repositorios Avanzados para Frontend
+# Frontend Intelligence Knowledge Base
 
-Aquí hay una lista de repositorios de frontend avanzados, junto con sus descripciones.
+This repository is a monorepo containing a curated collection of powerful frontend libraries and tools. It serves as a knowledge base, with each sub-directory containing a specific project and a detailed `README.md` to explain its purpose, usage, and structure.
 
-## 1. Rellax
-- **Descripción:** Biblioteca de parallax en JavaScript pura y ligera. Se describe como “una librería parallax super ligera", ideal para crear desplazamientos suaves en páginas web. Permite efectos de parallax fluidos (incluyendo soporte móvil) simplemente incluyendo su script y añadiendo atributos data-rellax-speed en los elementos HTML.
-- **Repositorio:** [https://github.com/dixonandmoe/rellax](https://github.com/dixonandmoe/rellax)
+## How to Use This Repository
 
-## 2. Dynamics.js
-- **Descripción:** Librería de animaciones basada en física. Su documentación indica que es "una librería JavaScript para crear animaciones basadas en la física”. Ofrece funciones para animar propiedades CSS/SVG con efectos tipo spring, easing, fricción, etc. De esta forma se pueden lograr movimientos realistas (rebotes, empujes, etc.) controlando parámetros físicos avanzados.
-- **Repositorio:** [https://github.com/michaelvillar/dynamics.js](https://github.com/michaelvillar/dynamics.js)
+This repository contains sub-repositories that may be updated periodically. To ensure all local copies are up-to-date, you can run the provided Python script.
 
-## 3. Barba.js
-- **Descripción:** Framework ligero de transiciones de página. Se presenta como “una librería pequeña y fácil de usar para crear transiciones fluidas y suaves entre las páginas". Barba permite que un sitio web funcione como una SPA (Single Page Application), reduciendo retardos entre vistas, minimizando solicitudes HTTP y mejorando la experiencia de usuario. Soporta hooks y plugins para personalizar las transiciones y gestión de estado entre vistas de forma extensible.
-- **Repositorio:** [https://github.com/barbajs/barba](https://github.com/barbajs/barba)
+```bash
+python3 update_repos.py
+```
+This script will iterate through all sub-directories, run `git pull` on any that are Git repositories, and then clean up their local `.git` folders to avoid conflicts with the parent monorepo.
 
-## 4. Bounce.js
-- **Descripción:** Herramienta y biblioteca para animaciones CSS3 con keyframes. En GitHub se define como "una herramienta y biblioteca JS para generar hermosas animaciones con keyframes CSS3”. Incluye un generador visual (interfaz web) donde se ensamblan animaciones combinando componentes (escalado, rotación, traslación, inclinación) y se exportan como código CSS o JavaScript. Es útil para crear animaciones complejas tipo “rebote” o secuencias predefinidas sin escribir cada keyframe manualmente.
-- **Repositorio:** [https://github.com/tictail/bounce.js](https://github.com/tictail/bounce.js)
+## Contents
 
-## 5. Anime.js
-- **Descripción:** Motor de animación multipropósito. Su repositorio lo describe como “una biblioteca de animación de JavaScript rápida, multipropósito y ligera”. Funciona animando propiedades CSS, atributos SVG, atributos DOM y objetos JavaScript, con una API sencilla y soporte para animaciones simultáneas (stagger) y bucles. Anime.js es muy popular (tiene ~65K estrellas) por su rendimiento y facilidad para crear animaciones complejas (tránsitos, transformaciones, interpolaciones de colores, etc.) tanto en elementos HTML como SVG.
-- **Repositorio:** [https://github.com/juliangarnier/anime](https://github.com/juliangarnier/anime)
-
-## 6. Wait! Animate
-- **Descripción:** Generador de pausas en animaciones CSS. Se define como "calcula pausas en los bucles de animación CSS”. Esta herramienta web (y librería) permite insertar delays precisos entre iteraciones de una animación en bucle, algo que la especificación CSS nativa no soporta directamente. Automáticamente agrega fotogramas clave intermedios con animation-delay calculado, simplificando el proceso de hacer que una animación se detenga cierto tiempo entre repeticiones. Es útil para efectos donde se necesita un "pausa" visible antes de repetir la animación.
-- **Repositorio:** [https://github.com/will-stone/waitanimate](https://github.com/will-stone/waitanimate)
-
-## 7. Velocity.js
-- **Descripción:** Motor de animación acelerado para JavaScript. Se describe como "un motor de animación con la misma API que $.animate de jQuery. Es increíblemente rápido". Velocity combina las ventajas de las animaciones nativas CSS y jQuery .animate() para ofrecer rendimiento óptimo (incluye soporte de coloreado, bucles, easings personalizados, animación SVG y scroll). Puede reemplazar llamadas a jQuery.animate con mínima modificación al código, acelerando las animaciones existentes (especialmente en dispositivos móviles).
-- **Repositorio:** [https://github.com/julianshapiro/velocity](https://github.com/julianshapiro/velocity)
-
-## 8. Draggable (Shopify)
-- **Descripción:** Librería para drag-and-drop personalizada. Su documentación indica: "Draggable abstrae eventos nativos del navegador en una API para crear una experiencia de arrastrar y soltar personalizada”. Ofrece control completo sobre la lógica de drag and drop, generando elementos "espejo” (mirror), emitiendo eventos, gestionando sensores de arrastre, etc. Incluye módulos adicionales (Sortable, Droppable, Swappable) para añadir comportamientos extra, aunque la mantención original se archivó. Sirve para implementar interfaces interactivas de arrastre avanzadas sin partir de cero.
-- **Repositorio:** [https://github.com/Shopify/draggable](https://github.com/Shopify/draggable)
-
-## 9. axe-core
-- **Descripción:** Motor de pruebas de accesibilidad automatizadas. Se promociona como “un motor de pruebas de accesibilidad para sitios web y otras interfaces HTML, rápido, seguro y ligero”. Axe-core permite integrar chequeos WCAG (Web Content Accessibility Guidelines) en el flujo de desarrollo, ejecutando reglas automáticas que detectan problemas de contraste, ARIA, encabezados faltantes, etc. Al integrarlo en las pruebas unitarias o de integración, ayuda a garantizar que el frontend cumpla criterios de accesibilidad desde etapas tempranas del desarrollo.
-- **Repositorio:** [https://github.com/dequelabs/axe-core](https://github.com/dequelabs/axe-core)
-
-## 10. Lodash
-- **Descripción:** Biblioteca de utilidades JavaScript. Su repositorio explica: "Lodash hace JavaScript más fácil al eliminar la complicación de trabajar con arrays, números, objetos, strings, etc.”. Ofrece funciones optimizadas para manipular colecciones, objetos y cadenas (map, filter, merge, debounce, throttle, etc.), facilitando tareas comunes con mejor rendimiento. Gracias a su modularidad y estabilidad, Lodash es muy usado en proyectos profesionales para mejorar la legibilidad y eficiencia del código de frontend.
-- **Repositorio:** [https://github.com/lodash/lodash](https://github.com/lodash/lodash)
+| Library/Tool  | Description                                                                                             | Details                                  |
+|---------------|---------------------------------------------------------------------------------------------------------|------------------------------------------|
+| `anime`       | A lightweight and powerful JavaScript animation engine.                                                 | [Read More](./anime/README.md)           |
+| `axe-core`    | A lightweight, fast, and secure accessibility engine for automated web UI testing.                        | [Read More](./axe-core/README.md)        |
+| `barba`       | A lightweight and flexible JavaScript library for creating smooth and fluid transitions between pages.    | [Read More](./barba/README.md)           |
+| `bounce.js`   | A JavaScript library for creating beautiful and elegant CSS3-powered keyframe animations.                 | [Read More](./bounce.js/README.md)       |
+| `draggable`   | A lightweight, modular, and accessible drag-and-drop library.                                           | [Read More](./draggable/README.md)       |
+| `dynamics.js` | A JavaScript library designed to create realistic, physics-based animations.                            | [Read More](./dynamics.js/README.md)     |
+| `lodash`      | A modern JavaScript utility library delivering modularity, performance, and extras.                     | [Read More](./lodash/README.md)          |
+| `rellax`      | A buttery-smooth, super lightweight, vanilla JavaScript parallax library.                               | [Read More](./rellax/README.md)          |
+| `velocity`    | A high-performance, standalone JavaScript animation engine.                                             | [Read More](./velocity/README.md)        |
+| `waitanimate` | A web-based tool for adding a pause or delay between iterations of a looped CSS animation.                | [Read More](./waitanimate/README.md)     |
